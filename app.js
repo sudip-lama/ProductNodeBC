@@ -63,7 +63,7 @@ else{
 	global.dbConnString = connString;
 }
 
-app.get('/select', function(req,res){
+app.get('/getOfferings', function(req,res){
 	ibmdb.open(dbConnString,function(err,conn){
 	if(err){
 		console.error("Error: ",err);
