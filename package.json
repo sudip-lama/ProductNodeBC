@@ -7,7 +7,9 @@
 	},
 	"dependencies": {
 		"express": "4.13.x",
-		"cfenv": "1.0.x"
+		"cfenv": "1.0.x",
+		"ibm_db": "0.0.19",
+    	"jade": "1.11.0"
 	},
 	"repository": {},
 	"engines": {
