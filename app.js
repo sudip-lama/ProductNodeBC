@@ -67,7 +67,7 @@ app.get('/getOfferings', function(req,res){
 		return;
 
 	}else{
-		var query = "SELECT * FROM OFFERING_TABLE";
+		var query = "SELECT OFFERING_CATEGORY FROM OFFERING_TABLE";
 		conn.query(query,function(err,rows){
 			if(err){
 				console.error("Error: ",err);
@@ -87,5 +87,34 @@ app.get('/getOfferings', function(req,res){
 
 });
 
+/*
+	Get offering category and description
+*/
+app.get('/getOfferingCategory', function(req,res){
+	ibmdb.open(dbConnString,function(err,conn){
+	if(err){
+		console.error("Error: ",err);
+		return;
+
+	}else{
+		var query = "SELECT OFFERING_CATEGORY,OFFERING_DESCRIPTION FROM OFFERING_TABLE";
+		conn.query(query,function(err,rows){
+			if(err){
+				console.error("Error: ",err);
+				return;
+
+			}else{
+				res.send(rows);
+				conn.close(function(){
+					console.log("Connection closed successfully");
+				});
+			}
+
+		});
+	}
+
+});
+
+});
 
 app.get('/offers',routes.trigger(ibmdb,dbConnString));
