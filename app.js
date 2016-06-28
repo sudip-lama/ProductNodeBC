@@ -27,6 +27,8 @@ app.listen(appEnv.port, '0.0.0.0', function() {
   console.log("server starting on " + appEnv.url);
 });
 
+var routes = require('./routes');
+
 /*
 	Start of Changes
 */
@@ -55,13 +57,8 @@ if (process.env.VCAP_SERVICES) {
 
 var ibmdb = require('ibm_db');
 
+global.dbConnString = "DATABASE=BLUDB;HOSTNAME=dashdb-entry-yp-dal09-07.services.dal.bluemix.net;PORT=50000;PROTOCOL=TCPIP;UID=dash6885;PWD=L6FlGJACstKJ;";
 
-if(!hasString){
-	global.dbConnString = "DATABASE=BLUDB;HOSTNAME=dashdb-entry-yp-dal09-07.services.dal.bluemix.net;PORT=50000;PROTOCOL=TCPIP;UID=dash6885;PWD=L6FlGJACstKJ;";
-}
-else{
-	global.dbConnString = connString;
-}
 
 app.get('/getOfferings', function(req,res){
 	ibmdb.open(dbConnString,function(err,conn){
@@ -89,3 +86,6 @@ app.get('/getOfferings', function(req,res){
 });
 
 });
+
+
+app.get('/offers',routes.trigger(ibmdb,dbConnString));
