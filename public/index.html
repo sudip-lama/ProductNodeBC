@@ -1,25 +1,412 @@
 <!DOCTYPE html>
-<html>
-
-  <head>
-    <title>NodeJS Starter Application</title>
+<html lang="en">
+<head>
+    <title>Block Chain Project</title>
     <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="stylesheets/style.css">
-  </head>
+    <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
+    <script src="bootstrap/js/bootstrap.min.js"></script>
+    <style>
+        body {
+            background-color: #cdedc7;
+            color: black;
+        }
+        .main-content {
+            background-color: #3c763d;
+            color: white;
+            height: 1000px;
+        }
+        .nav-tabs>li:active>a {background-color:#3c763d;color:white; }
+        .nav-tabs>li>a {background-color:#397D11;color:white; }
+        .nav-tabs>ul:hover {
+            background-color:#9df265;
+        }
+        li .sidebarLi {
+            padding: 10px 0;
+        }
+        .list-group-item {
+            background-color: #3c763d;
+        }
+        .list-group-item>a{
+            color: white;
+        }
+        .table-hover tbody tr:hover td, .table-hover tbody tr:hover th {
+            background-color: #9df265;
+        }
+        .container-holder {
+            padding-top: 15px;
+        }
+        .tab-pane {
+            padding-top: 10px;
+        }
+        /* Set height of the grid so .sidenav can be 100% (adjust if needed) */
+        .row.content {
+            height: 1000px
+        }
+        /* Set similar background color to that of body and 100% height */
+        .sidenav {
+            background-color: #cdedc7;
+            height: 100%;
+        }
+        /* Set black background color, white text and some padding */
+        footer {
+            background-color: #3c763d;
+            color: white;
+            padding: 15px;
+        }
+        /* On small screens, set height to 'auto' for sidenav and grid */
+        @media screen and (max-width: 767px) {
+            .sidenav {
+                height: auto;
+                padding: 15px;
+            }
+            .row.content {
+                height: auto;
+            }
+        }
+    </style>
+</head>
+<body>
+<div class="container-holder">
+    <div class="container">
+        <div class="row content">
+            <div class="col-sm-3 sidenav">
+                <ul class="nav nav-tabs nav-stacked">
+                    <li class="sidebarLi active">
+                        <img src="dist/img/user2.jpg" class="img-thumbnail" alt="User Image"></li>
+                    <hr/>
+                    <li class="sidebarLi">General Information
+                        <br/><br/>
+                        <p class="text=right">
+                            <span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span>&nbsp; &nbsp; &nbsp;Position<br/>
+                            &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; Intern
+                        </p>
+                        <p class="text=right">
+                            <span class="glyphicon glyphicon-folder-close" aria-hidden="true"></span>&nbsp; &nbsp;
+                            &nbsp;Company<br/>
+                            &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; IBM
+                        </p>
+                    </li>
+                    <hr/>
+                    <li class="sidebarLi">Contact Information
+                        <br/><br/>
+                        <p class="text=right">
+                            <span class="glyphicon glyphicon-phone" aria-hidden="true"></span> &nbsp; &nbsp; &nbsp;
+                            Cell<br/>
+                            &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; +1 -817 - 5-****
+                        </p>
+                        <p class="text=right">
+                            <span class="glyphicon glyphicon-map-marker" aria-hidden="true"></span>&nbsp; &nbsp; &nbsp;
+                            Address<br/>
+                            &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; RTP
+                        </p>
+                    </li>
 
-  <body>
-    <table>
-      <tr>
-        <td style= "width:30%;">
-          <img class = "newappIcon" src="images/newapp-icon.png">
-        <td>
-            <h1>Hi there!</h1>
-          <p>Thanks for creating a
-            <span class = "blue">NodeJS Starter Application</span>.
-            To get started see the Start Coding guide under your app in your dashboard.
-    </table>
-  </body>
+                </ul>
+                <br>
+            </div>
+            <div class="col-sm-9 ">
+                <ul class="nav nav-tabs">
+                    <li class="horizontalLi active"><a href="#home" role="tab" data-toggle="tab">Home</a></li>
+                    <li class="horizontalLi"><a href="#purchaseItem" role="tab" data-toggle="tab">Purchase Item</a></li>
+                    <li class="horizontalLi"><a href="#offering" role="tab" data-toggle="tab">Offering</a></li>
+                        <li class="horizontalLi"><a href="#product" role="tab" data-toggle="tab">Products</a></li>
+                    <li class="horizontalLi"><a href="#settings" role="tab" data-toggle="tab">Settings</a></li>
+                </ul>
+                <div class="main-content tab-content tab-table">
+                    <div role="tabpanel" class="tab-pane active" id="home">
+                        <h2></h2>
+                        <h4>Recent Purchase</h4>
+                        <div class="table-responsive">
+                            <table class="table table-hover">
 
+                                <tbody>
+                                <tr>
+                                    <td><i class="pull-right fa fa-edit"></i> Today, 1:00 - Jeff Manzi liked your post.
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td><i class="pull-right fa fa-edit"></i> Today, 12:23 - Mark Friendo liked and
+                                        shared your post.
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td><i class="pull-right fa fa-edit"></i> Today, 12:20 - You posted a new blog entry
+                                        title "Why social media is".
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td><i class="pull-right fa fa-edit"></i> Yesterday - Karen P. liked your post.</td>
+                                </tr>
+                                <tr>
+                                    <td><i class="pull-right fa fa-edit"></i> 2 Days Ago - Philip W. liked your post.
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td><i class="pull-right fa fa-edit"></i> 2 Days Ago - Jeff Manzi liked your post.
+                                    </td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                    <div role="tabpanel" class="tab-pane" id="purchaseItem">
+                        <h4>List of Purchase Items</h4>
+                        <div class="table-responsive">
+                            <table class="table table-hover">
+                                <thead>
+                                <tr>
+                                    <th>SN#</th>
+                                    <th>Item Name</th>
+                                    <th>Start Date</th>
+                                    <th>End Date</th>
+                                    <th>Price</th>
+
+                                </tr>
+                                </thead>
+                                <tbody id="items">
+                                <tr>
+                                    <td>1</td>
+                                    <td>Table cell</td>
+                                    <td>Table cell</td>
+                                    <td>Table cell</td>
+                                    <td>Table cell</td>
+
+
+                                </tr>
+                                <tr>
+                                    <td>2</td>
+                                    <td>Table cell</td>
+                                    <td>Table cell</td>
+                                    <td>Table cell</td>
+                                    <td>Table cell</td>
+
+
+                                </tr>
+                                <tr>
+                                    <td>3</td>
+                                    <td>Table cell</td>
+                                    <td>Table cell</td>
+                                    <td>Table cell</td>
+                                    <td>Table cell</td>
+
+                                </tr>
+                                <tr>
+                                    <td>4</td>
+                                    <td>Table cell</td>
+                                    <td>Table cell</td>
+                                    <td>Table cell</td>
+                                    <td>Table cell</td>
+
+
+                                </tr>
+                                <tr>
+                                    <td>5</td>
+                                    <td>Table cell</td>
+                                    <td>Table cell</td>
+                                    <td>Table cell</td>
+                                    <td>Table cell</td>
+
+                                </tr>
+                                <tr>
+                                    <td>6</td>
+                                    <td>Table cell</td>
+                                    <td>Table cell</td>
+                                    <td>Table cell</td>
+                                    <td>Table cell</td>
+
+
+                                </tr>
+                                <tr>
+                                    <td>7</td>
+                                    <td>Table cell</td>
+                                    <td>Table cell</td>
+                                    <td>Table cell</td>
+                                    <td>Table cell</td>
+
+
+                                </tr>
+                                <tr>
+                                    <td>8</td>
+                                    <td>Table cell</td>
+                                    <td>Table cell</td>
+                                    <td>Table cell</td>
+                                    <td>Table cell</td>
+
+
+                                </tr>
+                                <tr>
+                                    <td>9</td>
+                                    <td>Table cell</td>
+                                    <td>Table cell</td>
+                                    <td>Table cell</td>
+                                    <td>Table cell</td>
+
+                                </tr>
+
+                            </table>
+
+                          </div>
+                        </div>
+
+                    <div role="tabpanel" class="tab-pane" id="offering">
+
+                            <h2></h2>
+
+                            <ul class="list-group">
+                                <li class="list-group-item "><b>Offerings:</b></li>
+                                <li class="list-group-item text-right"><a href="#" class="pull-left">Here is your a link to
+                                    the latest summary report from the..</a> 2.13.2014
+                                </li>
+                                <li class="list-group-item text-right"><a href="#" class="pull-left">Hi Joe, There has been
+                                    a request on your account since that was..</a> 2.11.2014
+                                </li>
+                                <li class="list-group-item text-right"><a href="#" class="pull-left">Nullam sapien
+                                    massaortor. A lobortis vitae, condimentum justo...</a> 2.11.2014
+                                </li>
+                                <li class="list-group-item text-right"><a href="#" class="pull-left">Thllam sapien
+                                    massaortor. A lobortis vitae, condimentum justo...</a> 2.11.2014
+                                </li>
+                                <li class="list-group-item text-right"><a href="#" class="pull-left">Wesm sapien massaortor.
+                                    A lobortis vitae, condimentum justo...</a> 2.11.2014
+                                </li>
+                                <li class="list-group-item text-right"><a href="#" class="pull-left">For therepien
+                                    massaortor. A lobortis vitae, condimentum justo...</a> 2.11.2014
+                                </li>
+                                <li class="list-group-item text-right"><a href="#" class="pull-left">Also we, havesapien
+                                    massaortor. A lobortis vitae, condimentum justo...</a> 2.11.2014
+                                </li>
+                                <li class="list-group-item text-right"><a href="#" class="pull-left">Swedish chef is
+                                    assaortor. A lobortis vitae, condimentum justo...</a> 2.11.2014
+                                </li>
+
+                            </ul>
+                        </div>
+
+
+                    <div role="tabpanel" class="tab-pane" id="product">
+
+                        <h2></h2>
+
+                        <ul class="list-group">
+                            <li class="list-group-item "><b>Products:</b></li>
+                            <li class="list-group-item text-right"><a href="#" class="pull-left">Here is your a link to
+                                the latest summary report from the..</a> 2.13.2014
+                            </li>
+                            <li class="list-group-item text-right"><a href="#" class="pull-left">Hi Joe, There has been
+                                a request on your account since that was..</a> 2.11.2014
+                            </li>
+                            <li class="list-group-item text-right"><a href="#" class="pull-left">Nullam sapien
+                                massaortor. A lobortis vitae, condimentum justo...</a> 2.11.2014
+                            </li>
+                            <li class="list-group-item text-right"><a href="#" class="pull-left">Thllam sapien
+                                massaortor. A lobortis vitae, condimentum justo...</a> 2.11.2014
+                            </li>
+                            <li class="list-group-item text-right"><a href="#" class="pull-left">Wesm sapien massaortor.
+                                A lobortis vitae, condimentum justo...</a> 2.11.2014
+                            </li>
+                            <li class="list-group-item text-right"><a href="#" class="pull-left">For therepien
+                                massaortor. A lobortis vitae, condimentum justo...</a> 2.11.2014
+                            </li>
+                            <li class="list-group-item text-right"><a href="#" class="pull-left">Also we, havesapien
+                                massaortor. A lobortis vitae, condimentum justo...</a> 2.11.2014
+                            </li>
+                            <li class="list-group-item text-right"><a href="#" class="pull-left">Swedish chef is
+                                assaortor. A lobortis vitae, condimentum justo...</a> 2.11.2014
+                            </li>
+
+                        </ul>
+                    </div>
+                    <div role="tabpanel" class="tab-pane" id="settings">
+                        <hr>
+                        <form class="form" action="##" method="post" id="registrationForm">
+                            <div class="form-group">
+
+                                <div class="col-xs-6">
+                                    <label for="first_name"><h4>First name</h4></label>
+                                    <input type="text" class="form-control" name="first_name" id="first_name"
+                                           placeholder="first name" title="enter your first name if any.">
+                                </div>
+                            </div>
+                            <div class="form-group">
+
+                                <div class="col-xs-6">
+                                    <label for="last_name"><h4>Last name</h4></label>
+                                    <input type="text" class="form-control" name="last_name" id="last_name"
+                                           placeholder="last name" title="enter your last name if any.">
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+
+                                <div class="col-xs-6">
+                                    <label for="phone"><h4>Phone</h4></label>
+                                    <input type="text" class="form-control" name="phone" id="phone"
+                                           placeholder="enter phone" title="enter your phone number if any.">
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <div class="col-xs-6">
+                                    <label for="mobile"><h4>Mobile</h4></label>
+                                    <input type="text" class="form-control" name="mobile" id="mobile"
+                                           placeholder="enter mobile number" title="enter your mobile number if any.">
+                                </div>
+                            </div>
+                            <div class="form-group">
+
+                                <div class="col-xs-6">
+                                    <label for="email"><h4>Email</h4></label>
+                                    <input type="email" class="form-control" name="email" id="email"
+                                           placeholder="you@email.com" title="enter your email.">
+                                </div>
+                            </div>
+                            <div class="form-group">
+
+                                <div class="col-xs-6">
+                                    <label for="email"><h4>Location</h4></label>
+                                    <input type="email" class="form-control" id="location" placeholder="somewhere"
+                                           title="enter a location">
+                                </div>
+                            </div>
+                            <div class="form-group">
+
+                                <div class="col-xs-6">
+                                    <label for="password"><h4>Password</h4></label>
+                                    <input type="password" class="form-control" name="password" id="password"
+                                           placeholder="password" title="enter your password.">
+                                </div>
+                            </div>
+                            <div class="form-group">
+
+                                <div class="col-xs-6">
+                                    <label for="password2"><h4>Verify</h4></label>
+                                    <input type="password" class="form-control" name="password2" id="password2"
+                                           placeholder="password2" title="enter your password2.">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-xs-12">
+                                    <br>
+                                    <button class="btn btn-lg btn-success" type="submit"><i
+                                            class="glyphicon glyphicon-ok-sign"></i> Save
+                                    </button>
+                                    <button class="btn btn-lg" type="reset"><i class="glyphicon glyphicon-repeat"></i>
+                                        Reset
+                                    </button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+
+</body>
 </html>
