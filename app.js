@@ -46,7 +46,7 @@ if (process.env.VCAP_SERVICES) {
         console.log(db2);
         var connString = "DRIVER={DB2};DATABASE=" + db2.db + ";UID=" + db2.username + ";PWD=" + db2.password + ";HOSTNAME=" + db2.hostname + ";port=" + db2.port;
 	}
-	
+
 }
 
 
@@ -67,14 +67,45 @@ app.get('/getOfferings', function(req,res){
 		return;
 
 	}else{
-		var query = "SELECT OFFERING_CATEGORY FROM OFFERING_TABLE";
+		var query = "SELECT OFFERING_ID, OFFERING_DESCRIPTION, OFFERING_CATEGORY,CURRENT_LIST_PRICE FROM OFFERING_TABLE";
 		conn.query(query,function(err,rows){
 			if(err){
 				console.error("Error: ",err);
 				return;
 
 			}else{
-				res.send(rows);
+				res.json(rows);
+				conn.close(function(){
+					console.log("Connection closed successfully");
+				});
+			}
+
+		});
+	}
+
+});
+
+});
+/*
+Get Offering description of paarticular offering
+*/
+
+app.get('/getOfferings/:OFFERING_ID', function(req,res){
+
+	ibmdb.open(dbConnString,function(err,conn){
+	if(err){
+		console.error("Error: ",err);
+		return;
+
+	}else{
+		var query = "SELECT * FROM OFFERING_TABLE WHERE OFFERING_ID = '"+req.params.OFFERING_ID+"' LIMIT 1 ";
+		conn.query(query,function(err,result){
+			if(err){
+				console.error("Error: ",err);
+				return;
+
+			}else{
+				res.json(result);
 				conn.close(function(){
 					console.log("Connection closed successfully");
 				});

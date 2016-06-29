@@ -5,8 +5,16 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="stylesheets/jquery-ui.css">
+    <script src="javascript/jquery.js"></script>
+    <script src="javascript/jquery-ui.js"></script>
+    <script src="javascript/jquery-ui.min.js"></script>
+
+
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
     <script src="bootstrap/js/bootstrap.min.js"></script>
+
+    <script src="javascript/main.js"></script>
     <style>
         body {
             background-color: #cdedc7;
@@ -49,6 +57,24 @@
             background-color: #cdedc7;
             height: 100%;
         }
+        div#spinner
+        {
+    display: none;
+    width:100px;
+    height: 100px;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    background:url(spinner.gif) no-repeat center #fff;
+    text-align:center;
+    padding:10px;
+    font:normal 16px Tahoma, Geneva, sans-serif;
+    border:1px solid #666;
+    margin-left: -50px;
+    margin-top: -50px;
+    z-index:2;
+    overflow: auto;
+}
         /* Set black background color, white text and some padding */
         footer {
             background-color: #3c763d;
@@ -108,11 +134,11 @@
             </div>
             <div class="col-sm-9 ">
                 <ul class="nav nav-tabs">
-                    <li class="horizontalLi active"><a href="#home" role="tab" data-toggle="tab">Home</a></li>
-                    <li class="horizontalLi"><a href="#purchaseItem" role="tab" data-toggle="tab">Purchase Item</a></li>
-                    <li class="horizontalLi"><a href="#offering" role="tab" data-toggle="tab">Offering</a></li>
-                        <li class="horizontalLi"><a href="#product" role="tab" data-toggle="tab">Products</a></li>
-                    <li class="horizontalLi"><a href="#settings" role="tab" data-toggle="tab">Settings</a></li>
+                    <li class="horizontalLi active"><a href="#home"  >Home</a></li>
+                    <li class="horizontalLi"><a href="#purchaseItem" >Purchase Item</a></li>
+                    <li  class="horizontalLi"><a id="offeringLink" href="#offering">Offering</a></li>
+                        <li class="horizontalLi"><a href="#product"  >Products</a></li>
+                    <li class="horizontalLi"><a href="#settings">Settings</a></li>
                 </ul>
                 <div class="main-content tab-content tab-table">
                     <div role="tabpanel" class="tab-pane active" id="home">
@@ -254,15 +280,23 @@
                     <div role="tabpanel" class="tab-pane" id="offering">
 
                             <h2></h2>
-
+                            <h4>Offerings:</h4>
+                            
+                            <div id="wait" style="display:none;width:69px;height:89px;border:1px solid black;position:absolute;top:50%;left:50%;padding:2px;">
+                            <img src='/images/demo_wait.gif' width="64" height="64" />
+                              <br>Loading..</div>
                             <ul class="list-group">
-                                <li class="list-group-item "><b>Offerings:</b></li>
-                                <li class="list-group-item text-right"><a href="/getOfferings" class="pull-left">Click here to view Offering Category</a> 
+
+                              <div id="offeringList"></div>
+                                <!--
+                                <li class="list-group-item text-right"><a href="/getOfferings" class="pull-left">
+                                  Click here to view Offering Category</a>ffff
                                 </li>
-                                
-                                <!-- <li class="list-group-item text-right"><a href="#" class="pull-left">Hi Joe, There has been
+
+                                 <li class="list-group-item text-right"><a href="#" class="pull-left">Hi Joe, There has been
                                     a request on your account since that was..</a> 2.11.2014
                                 </li>
+
                                 <li class="list-group-item text-right"><a href="#" class="pull-left">Nullam sapien
                                     massaortor. A lobortis vitae, condimentum justo...</a> 2.11.2014
                                 </li>
@@ -280,7 +314,7 @@
                                 </li>
                                 <li class="list-group-item text-right"><a href="#" class="pull-left">Swedish chef is
                                     assaortor. A lobortis vitae, condimentum justo...</a> 2.11.2014
-                                </li> -->
+                                </li>-->
 
                             </ul>
                         </div>
