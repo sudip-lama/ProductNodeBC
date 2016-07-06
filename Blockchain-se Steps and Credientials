@@ -1,0 +1,386 @@
+//BlockChain-Se Instance
+Steps for BlockChain code:
+
+1. Registrar
+{
+    "enrollId": "dashboarduser_type0_e1d784fcfb",
+        "enrollSecret": "96171717a5"
+}
+
+2.DeploySpec
+
+{
+    "jsonrpc": "2.0",
+    "method": "deploy",
+    "params": {
+        "type": 1,
+        "chaincodeID": {
+            "path": "https://github.com/sudip-lama/ProductBC/finished"
+        },
+        "ctorMsg": {
+            "function": "init",
+            "args": [
+                "hi there"
+            ]
+        },
+        "secureContext": "dashboarduser_type0_e1d784fcfb"
+    },
+    "id": 1
+}
+Response:
+{
+  "jsonrpc": "2.0",
+  "result": {
+    "status": "OK",
+    "message": "79faf88fd5ffaefe46663a762a0d95cc21ee766409b655a810284ed7783ee5a12b8cb71ee89654e0c4637cce52e161a1bf7a7f06cd582e219063d487f4ead494"
+  },
+  "id": 1
+}
+
+
+3. Create product:
+
+{
+    "jsonrpc": "2.0",
+    "method": "invoke",
+    "params": {
+        "type": 1,
+        "chaincodeID": {
+            "name": "79faf88fd5ffaefe46663a762a0d95cc21ee766409b655a810284ed7783ee5a12b8cb71ee89654e0c4637cce52e161a1bf7a7f06cd582e219063d487f4ead494"
+        },
+        "ctorMsg": {
+            "function": "init_product",
+            "args": [
+                "TS001",
+                "Watson",
+                "Text to Speech 01",
+                "6/1/16",
+                "6/1/18",
+                "1000",
+                "USD",
+                "6/2/16",
+                "8/15/16",
+                "product_manager"
+
+            ]
+        },
+        "secureContext": "dashboarduser_type0_e1d784fcfb"
+    },
+    "id": 3
+}
+
+
+
+{
+    "jsonrpc": "2.0",
+    "method": "invoke",
+    "params": {
+        "type": 1,
+        "chaincodeID": {
+            "name": "79faf88fd5ffaefe46663a762a0d95cc21ee766409b655a810284ed7783ee5a12b8cb71ee89654e0c4637cce52e161a1bf7a7f06cd582e219063d487f4ead494"
+        },
+        "ctorMsg": {
+            "function": "init_product",
+            "args": [
+                "TS002",
+                "Watson",
+                "Text to Speech 02",
+                "6/1/16",
+                "6/1/18",
+                "5000",
+                "USD",
+                "6/2/16",
+                "8/15/16",
+                "product_manager"
+
+            ]
+        },
+        "secureContext": "dashboarduser_type0_e1d784fcfb"
+    },
+    "id": 3
+}
+
+
+3.
+
+{
+    "jsonrpc": "2.0",
+    "method": "query",
+    "params": {
+        "type": 1,
+        "chaincodeID": {
+            "name": "79faf88fd5ffaefe46663a762a0d95cc21ee766409b655a810284ed7783ee5a12b8cb71ee89654e0c4637cce52e161a1bf7a7f06cd582e219063d487f4ead494"
+        },
+        "ctorMsg": {
+            "function": "read",
+            "args": [
+                "TS001"
+            ]
+        },
+        "secureContext": "dashboarduser_type0_e1d784fcfb"
+    },
+    "id": 2
+}
+//Calling read_product_index function
+
+{
+    "jsonrpc": "2.0",
+    "method": "query",
+    "params": {
+        "type": 1,
+        "chaincodeID": {
+            "name": "79faf88fd5ffaefe46663a762a0d95cc21ee766409b655a810284ed7783ee5a12b8cb71ee89654e0c4637cce52e161a1bf7a7f06cd582e219063d487f4ead494"
+        },
+        "ctorMsg": {
+            "function": "read_product_index",
+            "args": [
+
+            ]
+        },
+        "secureContext": "dashboarduser_type0_e1d784fcfb"
+    },
+    "id": 2
+}
+//Calling read_product_index using invoke method (Dose not return Object
+but it returns the message id)
+
+{
+    "jsonrpc": "2.0",
+    "method": "invoke",
+    "params": {
+        "type": 1,
+        "chaincodeID": {
+            "name": "79faf88fd5ffaefe46663a762a0d95cc21ee766409b655a810284ed7783ee5a12b8cb71ee89654e0c4637cce52e161a1bf7a7f06cd582e219063d487f4ead494"
+        },
+        "ctorMsg": {
+            "function": "read_product_index",
+            "args": [
+
+            ]
+        },
+        "secureContext": "dashboarduser_type0_e1d784fcfb"
+    },
+    "id": 2
+}
+
+
+{
+    "jsonrpc": "2.0",
+    "method": "query",
+    "params": {
+        "type": 1,
+        "chaincodeID": {
+            "name": "79faf88fd5ffaefe46663a762a0d95cc21ee766409b655a810284ed7783ee5a12b8cb71ee89654e0c4637cce52e161a1bf7a7f06cd582e219063d487f4ead494"
+        },
+        "ctorMsg": {
+            "function": "read",
+            "args": [
+                "_productindex"
+            ]
+        },
+        "secureContext": "dashboarduser_type0_e1d784fcfb"
+    },
+    "id": 2
+}
+
+//Delete
+
+{
+    "jsonrpc": "2.0",
+    "method": "invoke",
+    "params": {
+        "type": 1,
+        "chaincodeID": {
+            "name": "79faf88fd5ffaefe46663a762a0d95cc21ee766409b655a810284ed7783ee5a12b8cb71ee89654e0c4637cce52e161a1bf7a7f06cd582e219063d487f4ead494"
+        },
+        "ctorMsg": {
+            "function": "delete",
+            "args": [
+                "TS001"
+            ]
+        },
+        "secureContext": "dashboarduser_type0_e1d784fcfb"
+    },
+    "id": 2
+}
+
+
+
+//Credentials
+{
+  "credentials": {
+    "peers": [
+      {
+        "discovery_host": "9cebf498-c7da-4b71-8730-2ef8c9521657_vp1-discovery.blockchain.ibm.com",
+        "discovery_port": 30303,
+        "api_host": "9cebf498-c7da-4b71-8730-2ef8c9521657_vp1-api.blockchain.ibm.com",
+        "api_port_tls": 443,
+        "api_port": 80,
+        "type": "peer",
+        "network_id": "9cebf498-c7da-4b71-8730-2ef8c9521657",
+        "container_id": "5782fa5e6535fa0cbba0ff6d3a8a8731527c625a145edd1aa7cd3a494d902702",
+        "id": "9cebf498-c7da-4b71-8730-2ef8c9521657_vp1",
+        "api_url": "http://9cebf498-c7da-4b71-8730-2ef8c9521657_vp1-api.blockchain.ibm.com:80"
+      },
+      {
+        "discovery_host": "9cebf498-c7da-4b71-8730-2ef8c9521657_vp2-discovery.blockchain.ibm.com",
+        "discovery_port": 30303,
+        "api_host": "9cebf498-c7da-4b71-8730-2ef8c9521657_vp2-api.blockchain.ibm.com",
+        "api_port_tls": 443,
+        "api_port": 80,
+        "type": "peer",
+        "network_id": "9cebf498-c7da-4b71-8730-2ef8c9521657",
+        "container_id": "604d869db035bf042b9abb4c9e224a63d6af543ac98dda104db6f234ee57431f",
+        "id": "9cebf498-c7da-4b71-8730-2ef8c9521657_vp2",
+        "api_url": "http://9cebf498-c7da-4b71-8730-2ef8c9521657_vp2-api.blockchain.ibm.com:80"
+      }
+    ],
+    "ca": {
+      "9cebf498-c7da-4b71-8730-2ef8c9521657_ca": {
+        "url": "9cebf498-c7da-4b71-8730-2ef8c9521657_ca-api.blockchain.ibm.com:30303",
+        "discovery_host": "9cebf498-c7da-4b71-8730-2ef8c9521657_ca-discovery.blockchain.ibm.com",
+        "discovery_port": 30303,
+        "api_host": "9cebf498-c7da-4b71-8730-2ef8c9521657_ca-api.blockchain.ibm.com",
+        "api_port_tls": 30303,
+        "api_port": 80,
+        "type": "ca",
+        "network_id": "9cebf498-c7da-4b71-8730-2ef8c9521657",
+        "container_id": "851a955a82dd336722852fb6b1cfef065aa69884cb65a24a8f9c213724e7881f"
+      }
+    },
+    "users": [
+      {
+        "username": "dashboarduser_type0_e1d784fcfb",
+        "secret": "96171717a5",
+        "enrollId": "dashboarduser_type0_e1d784fcfb",
+        "enrollSecret": "96171717a5"
+      },
+      {
+        "username": "dashboarduser_type0_7c5458b4b9",
+        "secret": "c4fdb969ea",
+        "enrollId": "dashboarduser_type0_7c5458b4b9",
+        "enrollSecret": "c4fdb969ea"
+      },
+      {
+        "username": "user_type1_1a2a31ffcc",
+        "secret": "652ea4560e",
+        "enrollId": "user_type1_1a2a31ffcc",
+        "enrollSecret": "652ea4560e"
+      },
+      {
+        "username": "user_type1_31dd00d83b",
+        "secret": "3313954e64",
+        "enrollId": "user_type1_31dd00d83b",
+        "enrollSecret": "3313954e64"
+      },
+      {
+        "username": "user_type1_b5ecbe3b2a",
+        "secret": "f36eec8a56",
+        "enrollId": "user_type1_b5ecbe3b2a",
+        "enrollSecret": "f36eec8a56"
+      },
+      {
+        "username": "user_type1_5b98be612e",
+        "secret": "e763320715",
+        "enrollId": "user_type1_5b98be612e",
+        "enrollSecret": "e763320715"
+      },
+      {
+        "username": "user_type1_3d21240e0f",
+        "secret": "4acb38e47a",
+        "enrollId": "user_type1_3d21240e0f",
+        "enrollSecret": "4acb38e47a"
+      },
+      {
+        "username": "user_type2_3cf5880d27",
+        "secret": "7b086d3ade",
+        "enrollId": "user_type2_3cf5880d27",
+        "enrollSecret": "7b086d3ade"
+      },
+      {
+        "username": "user_type2_cb0d4dc50c",
+        "secret": "bbf0f0af1d",
+        "enrollId": "user_type2_cb0d4dc50c",
+        "enrollSecret": "bbf0f0af1d"
+      },
+      {
+        "username": "user_type2_5b1f11d670",
+        "secret": "e819e3fee9",
+        "enrollId": "user_type2_5b1f11d670",
+        "enrollSecret": "e819e3fee9"
+      },
+      {
+        "username": "user_type2_261913c96d",
+        "secret": "fa3aa3a869",
+        "enrollId": "user_type2_261913c96d",
+        "enrollSecret": "fa3aa3a869"
+      },
+      {
+        "username": "user_type2_a860770497",
+        "secret": "51b9d08471",
+        "enrollId": "user_type2_a860770497",
+        "enrollSecret": "51b9d08471"
+      },
+      {
+        "username": "user_type4_aebb7ca8d8",
+        "secret": "b559069869",
+        "enrollId": "user_type4_aebb7ca8d8",
+        "enrollSecret": "b559069869"
+      },
+      {
+        "username": "user_type4_263617a97c",
+        "secret": "dcacd1cc0c",
+        "enrollId": "user_type4_263617a97c",
+        "enrollSecret": "dcacd1cc0c"
+      },
+      {
+        "username": "user_type4_4676c2603e",
+        "secret": "8b9da5526c",
+        "enrollId": "user_type4_4676c2603e",
+        "enrollSecret": "8b9da5526c"
+      },
+      {
+        "username": "user_type4_1008788516",
+        "secret": "50b2b0830f",
+        "enrollId": "user_type4_1008788516",
+        "enrollSecret": "50b2b0830f"
+      },
+      {
+        "username": "user_type4_fd24bb3108",
+        "secret": "995a30c511",
+        "enrollId": "user_type4_fd24bb3108",
+        "enrollSecret": "995a30c511"
+      },
+      {
+        "username": "user_type8_71273da100",
+        "secret": "cf5d7e292e",
+        "enrollId": "user_type8_71273da100",
+        "enrollSecret": "cf5d7e292e"
+      },
+      {
+        "username": "user_type8_2c585a9738",
+        "secret": "51d670e7ce",
+        "enrollId": "user_type8_2c585a9738",
+        "enrollSecret": "51d670e7ce"
+      },
+      {
+        "username": "user_type8_167c7df34a",
+        "secret": "9f494e7e49",
+        "enrollId": "user_type8_167c7df34a",
+        "enrollSecret": "9f494e7e49"
+      },
+      {
+        "username": "user_type8_a407140785",
+        "secret": "b67571fb94",
+        "enrollId": "user_type8_a407140785",
+        "enrollSecret": "b67571fb94"
+      },
+      {
+        "username": "user_type8_133b3122e1",
+        "secret": "923cfa27a2",
+        "enrollId": "user_type8_133b3122e1",
+        "enrollSecret": "923cfa27a2"
+      }
+    ]
+  }
+}
